@@ -1,0 +1,66 @@
+<main>
+  <div class = "container">
+    <h2 class = "pr-0 mx-3 mb-5 bg-secondary">新規登録</h2>
+
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      <div class = "row mb-2">
+          <div class = "col-sm-3"><%= f.label :名前 %></div>
+          <%= f.label :（姓）%>
+          <div class = "col-sm-3 mr-0 pl-0"><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control-sm", placeholder: "令和" %></div>
+          <%= f.label :（名）%>
+          <div class = "col-sm-3 pl-0"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control-sm", placeholder: "道子"%></div>
+      </div>
+
+      <div class="row mb-2">
+        <div class = "col-sm-3"><%= f.label :フリガナ %></div>
+        <%= f.label :（ｾｲ）%>
+        <div class="col-3 mr-0 pl-0"><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "form-control-sm", placeholder: "レイワ" %></div>
+        <%= f.label :（ﾒｲ）%>
+        <div class="col-sm-3 pl-0"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "form-control-sm", placeholder: "ミチコ" %></div>
+      </div>
+
+      <div class="row mb-2">
+        <div class = "col-sm-3"><%= f.label :メールアドレス %></div>
+        <div class = "col-sm-8 pl-5"><%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control-sm", placeholder: "sample@example.com"%></div>
+      </div>
+
+        <div class="row mb-2">
+          <div class = "col-sm-3 pr-0"><%= f.label :郵便番号（ハイフンなし） %></div>
+          <div class = "col-sm-8 pl-5"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control-sm" , placeholder: "000000"%></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class = "col-sm-3"><%= f.label :住所 %></div>
+          <div class = "col-sm-8 pl-5"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control border-dark border-1", placeholder: "東京都渋谷区代々木神園町町0−0"%></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class = "col-sm-3"><%= f.label :電話番号（ハイフンなし） %></div>
+          <div class = "col-sm-8 pl-5"><%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class: "form-control-sm" , placeholder: "00000000000"%></div>
+        </div>
+
+
+        <div class="row mb-2">
+          <div class = "col-sm-3"><%= f.label :パスワード（6文字以上）%></div>
+          <% if @minimum_password_length %>
+          <% end %>
+          <div class = "col-sm-8 pl-5"><%= f.password_field :password, autocomplete: "new-password", class: "form-control-sm", placeholder: "" %></div>
+        </div>
+
+        <div class="row mb-2">
+          <div class = "col-sm-3"><%= f.label :パスワード（再確認） %></div>
+          <div class = "col-sm-8 pl-5"><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-sm", placeholder: "" %></div>
+        </div>
+
+        <div class="actions row mb-2">
+          <div class = "col-sm-3"></div>
+          <div class = "col-sm-8 pl-5"><%= f.submit "        新規登録         ",class: "btn btn-warning text-white" %></div>
+        </div>
+    <% end %>
+
+      <div class = "col-sm-2 bg-secondary bg-opacity-25"><strong>既に登録済みの方</strong></div>
+      <div class = "pl-4"><%= link_to "こちら", new_customer_session_path %>からログインしてください</div>
+  </div>
+</main>
+<%= render "public/shared/links" %>
