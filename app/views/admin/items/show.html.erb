@@ -1,0 +1,11 @@
+<main>
+  <h4>商品詳細</h4>
+   <%= image_tag item.get_image %>
+   <h4>商品名</h4>
+    <%= @item.name %>
+    <h4>商品紹介</h4>
+    <%= @item.introduction %>
+    <h4>価格</h4>
+    <%= @item.price %>
+    <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+</main>

@@ -1,0 +1,29 @@
+   
+   <table class="table table-bordered">
+      <tr class="table-active">
+         <th>商品名</th>
+         <th>単価(税込み)</th>
+         <th>数量</th>
+         <th>小計</th>
+         <!--タグの中にbrタグを入れることで空白のセルを作れる-->
+         <th><br></th>
+      </tr>
+       <% @sum = 0 %>
+       <% @cart_item.each do |cart_item| %>
+         <tr>
+
+            <td>
+               <%= cart_item.item.name %>
+            </td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.amount %></td>
+            <td><%= cart_item.subtotal %></td>
+            <td><%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete %></td>
+            </tr>
+      <% end %>
+   </table>
+   <%= link_to "カートを空にする", "cart_items/destroy_all", method: :delete %>
+   <%= link_to "注文登録", new_public_order_path %>
+<%= link_to "買い物を続ける" , root_path , class: "btn btn-primary" %>
+
+

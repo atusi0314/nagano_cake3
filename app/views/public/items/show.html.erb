@@ -1,0 +1,14 @@
+<main>
+    <%= image_tag @item.get_image %>
+    <%= @item.name %>
+    <%= @item.introduction %>
+    <%= @item.price %>
+
+  <!--カートにデータを送る-->
+  <%= form_with model: @cart_item_new, url: public_cart_items_path do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <h4>個数</h4>
+    <%= f.select :amount, *[1..10] %>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
+</main>

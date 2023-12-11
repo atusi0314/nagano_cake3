@@ -23,6 +23,9 @@
           <div class = "collapse navbar-collapse" id="navbarNavDropdown">
             <ul style = "list-style: none;" class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
+               <li class="nav-item">
+                  <%= link_to "商品一覧", public_items_path , class: "btn btn-outline-dark"%>
+                </li>
                 <li class="nav-item">
                   <%= link_to "マイページ", public_customer_path(current_customer.id), class: "btn btn-outline-dark" %>
                 </li>
@@ -31,7 +34,10 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "管理者ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-dark" %>
+                  <%= link_to "会員一覧", admin_customers_path,class: "btn btn-outline-dark" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>
                 </li>
               <% else %>
                 <li class="nav-item">
@@ -40,7 +46,7 @@
                 <li class="nav-item">
                   <%= link_to "管理者ログイン", new_admin_session_path, class: "btn btn-outline-dark" %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to "商品一覧", public_items_path , class: "btn btn-outline-dark"%>
                 </li>
                 <li class="nav-item">

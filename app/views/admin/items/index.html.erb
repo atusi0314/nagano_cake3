@@ -2,13 +2,13 @@
   <div>
     <%= link_to "新規登録", new_admin_item_path %>  
   </div>
-  <% @item.each do |item| %>
-    <table class = "table">
-      <thead>
-        <tr>商品ID</tr>
-        <tr>商品名</tr>
-        <tr>商品価格</tr>
-      </thead>
+  <table class = "table">
+    <thead>
+      <tr>商品ID</tr>
+      <tr>商品名</tr>
+      <tr>商品価格</tr>
+    </thead>
+    <% @item.each do |item| %>
       <tbody>
         <tr>
           <th><%= item.id %></th>
@@ -16,6 +16,7 @@
           <th><%= item.price %></th>
         </tr>
       </tbody>
-    </table>
-  <% end %>
+    <% end %>
+  </table>
+  <%= paginate @item %>
 </main>
