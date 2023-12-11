@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_item.all
   end
    
-  
+
   def create
     @order = Order.new
     @order.customer_id = current_customer.id
@@ -36,11 +36,23 @@ class Public::OrdersController < ApplicationController
           @ordered_item.with_tax_price = cart_item.item.with_tax_price
           @ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
           @ordered_item.save #注文商品を保存
-        end 
+    end 
     
-    redirect_to confirm_path
+    current_custommer.cart_items.destroy_all
+    redirect_to complete_path
   end
   
+  def complete
+  end
+  
+  def index
+    @order= current_cusomer.orders
+  end
+  
+  def show
+    @order = Order.find(params[:id])
+    @ordered_item = @order.ordered_items
+  end
 
   private
   
